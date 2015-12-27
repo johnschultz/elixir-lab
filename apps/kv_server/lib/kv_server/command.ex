@@ -74,7 +74,7 @@ defmodule KVServer.Command do
   defp lookup(bucket, callback) do
     case KV.Registry.lookup(KV.Registry, bucket) do
       {:ok, pid} -> callback.(pid)
-      {:error, _} -> {:error, :not_found}
+      :error -> {:error, :not_found}
     end
   end
 
